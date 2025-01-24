@@ -19,7 +19,17 @@
 
 // }
 
+
+let today = new Date(); // aujourd’hui
+let current_month = today.getMonth(); // mois courant
+let current_day = today.getDate();
+
+console.log(today)
+console.log(current_month)
+console.log(current_day)
+
 function mois(maxmois) {
+
 let jour = 1
 
 
@@ -27,12 +37,16 @@ let jour = 1
 
     for (let index = 1; index <= 5;++index) {
         document.write("<tr>")
-        
-        for(it=1; it <= 7; ++it ) {
-            if(jour>=(maxmois+1)){}
-            else{
-            document.write("<td>"+(jour++)+"</td>")
-            }
+
+        for(it=1; it <= 7 && jour<=maxmois; ++it ) {
+            
+            // if (jour=current_day) {
+            //     const element = document.getElementsByTagName("td")[0]
+            //     element.classList.add("today")
+            // }
+            
+            document.write("<td id='lol'>"+(jour++)+"</td>")
+           
         }
     
         document.write("</tr>")
@@ -82,6 +96,12 @@ for (let cal = 0, moisit = 0; cal < 12; ++cal, ++moisit) {
     document.write("<br>")
     
 }
+
+// const element = document.getElementsByTagName("td")[21]
+// element.classList.add("today")
+
+
+
 
 
 // document.write("<table>")
