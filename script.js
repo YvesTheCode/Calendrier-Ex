@@ -28,7 +28,7 @@ console.log(today)
 console.log(current_month)
 console.log(current_day)
 
-function mois(maxmois) {
+function mois(maxmois, thismonth) {
 
 let jour = 1
 
@@ -40,13 +40,13 @@ let jour = 1
 
         for(it=1; it <= 7 && jour<=maxmois; ++it ) {
             
-            // if (jour=current_day) {
-            //     const element = document.getElementsByTagName("td")[0]
-            //     element.classList.add("today")
-            // }
-            
-            document.write("<td id='lol'>"+(jour++)+"</td>")
-           
+            if (jour===current_day && thismonth) {
+                document.write("<td class='today'>"+(jour++)+"</td>")
+            }
+            else{
+            document.write("<td>"+(jour++)+"</td>")
+            }
+
         }
     
         document.write("</tr>")
@@ -59,7 +59,7 @@ let jour = 1
 
 
 
-const moish1 = [
+let moish1 = [
     "Janvier", 
     "Février", 
     "Mars", 
@@ -74,7 +74,7 @@ const moish1 = [
     "Décembre"
   ];
 
-const moismax = [
+let moismax = [
     31,  // Janvier
     28,  // Février (non bissextile)
     31,  // Mars
@@ -89,10 +89,15 @@ const moismax = [
     31   // Décembre
   ];
 
-for (let cal = 0, moisit = 0; cal < 12; ++cal, ++moisit) {
+let thismonth = false
 
+for (let cal = 0, moisit = 0; cal < 12; ++cal, ++moisit) {
+    if (moisit===current_month) {
+        thismonth = true
+    }
+    else{thismonth = false}
     document.write("<h1>"+moish1[moisit]+"</h1>")
-    mois(moismax[moisit])
+    mois(moismax[moisit],thismonth)
     document.write("<br>")
     
 }
